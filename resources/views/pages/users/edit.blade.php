@@ -13,7 +13,6 @@
 @endpush
 
 @section('main')
-    <div class="main-content">
         <section class="section">
             <div class="section-header">
                 <h1>Advanced Forms</h1>
@@ -117,7 +116,6 @@
 
             </div>
         </section>
-    </div>
 @endsection
 
 @push('scripts')

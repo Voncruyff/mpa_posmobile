@@ -1,7 +1,9 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,16 +16,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route untuk halaman login (guest)
 Route::get('/', function () {
     return view('pages.auth.login');
 });
 
-// Route::middleware(['auth'])->group(function () {
-//     Route::get('home', function () {
-//         return view('pages.dashboard');
-//     })->name('home');
+Route::middleware(['auth'])->group(function () {
 
-//     Route::resource('user', UserController::class);
-//     Route::resource('product', \App\Http\Controllers\ProductController::class);
-//     Route::resource('order', \App\Http\Controllers\OrderController::class);
-// });
+    Route::get('/home', fn () => view('pages.dashboard'))->name('home');
+    Route::get('/dashboard', fn () => view('pages.dashboard'))->name('dashboard');
+
+    Route::resource('user', UserController::class);
+    Route::resource('product', ProductController::class);
+    Route::resource('order', OrderController::class);
+
+    Route::get('/profile', fn () => view('pages.profile'))->name('profile');
+    Route::put('/profile', [UserController::class, 'updateProfile'])->name('profile.update');
+
+    Route::get('/activities', fn () => view('pages.activities'))->name('activities');
+    Route::get('/settings', fn () => view('pages.settings'))->name('settings');
+
+    
+});
+

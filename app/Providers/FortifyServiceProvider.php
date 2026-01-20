@@ -43,7 +43,12 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
 
+        // Definisikan view untuk login dan register
         Fortify::loginView(fn () => view('pages.auth.login'));
         Fortify::registerView(fn () => view('pages.auth.register'));
+        
+        // Redirect setelah login berhasil ke /home
+        // Ini akan otomatis redirect ke route bernama 'home' setelah login
+        // Pastikan route 'home' sudah dibuat di web.php
     }
 }

@@ -51,7 +51,9 @@
             @include('components.sidebar')
 
             <!-- Content -->
-            @yield('main')
+            <div class="main-content">
+                @yield('main')
+            </div>
 
             <!-- Footer -->
             @include('components.footer')

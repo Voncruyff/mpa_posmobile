@@ -8,7 +8,6 @@
 @endpush
 
 @section('main')
-    <div class="main-content">
         <section class="section">
             <div class="section-header">
                 <h1>Orders</h1>
@@ -91,7 +90,6 @@
                 </div>
             </div>
         </section>
-    </div>
 @endsection
 
 @push('scripts')
